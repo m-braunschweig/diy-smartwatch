@@ -19,8 +19,8 @@
 #include <TimedTask.h>
 #include <Arduino.h>
 
-TimedTask::TimedTask(unsigned long _delay) {
-  delay_ = _delay;
+TimedTask::TimedTask(unsigned long delay) {
+  delay_ = delay;
 }
 
 void TimedTask::update_next_run() {

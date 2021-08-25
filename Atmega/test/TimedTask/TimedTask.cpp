@@ -17,6 +17,7 @@
  */
 
 #include <Arduino.h>
+#include <Adafruit_BusIO_Register.h>
 #include <TimedTask.h>
 #include <unity.h>
 

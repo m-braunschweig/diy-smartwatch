@@ -23,6 +23,22 @@ void DisplayManager::setup() {
   update = current_page->update;
 }
 
+void DisplayManager::touch_up() {
+  current_page->touch_up();
+}
+
+void DisplayManager::touch_left() {
+  current_page->touch_left();
+}
+
+void DisplayManager::touch_right() {
+  current_page->touch_right();
+}
+
+void DisplayManager::touch_down() {
+  current_page->touch_down();
+}
+
 void DisplayManager::changed_page() {
   update = current_page->update;
 }

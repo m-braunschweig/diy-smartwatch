@@ -26,6 +26,7 @@
 #include <Adafruit_Sensor.h>
 #include <DisplayManager.h>
 #include "Pages/PageHelper.h"
+#include "Touch.h"
 
 TimedTaskScheduler* timed_task_scheduler = new TimedTaskScheduler;
 DisplayManager display_manager;
@@ -35,6 +36,7 @@ void setup() {
   setup_pages();
   display_manager.setup();
   setup_tasks();
+  set_display_manager(&display_manager);
 }
 
 void loop() {
@@ -46,4 +48,7 @@ void setup_tasks() {
   TimedTask* display_task = new TimedTask(display_manager.update_interval());
   display_task->task = display_manager.update;
   timed_task_scheduler->add_task(display_task);
+  TimedTask* touch_task = new TimedTask(TOUCH_DELAY);
+  touch_task->task = &update_touch;
+  timed_task_scheduler->add_task(touch_task);
 }

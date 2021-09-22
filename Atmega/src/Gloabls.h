@@ -28,6 +28,11 @@
 #define TOUCH_DELAY 50
 #define TOUCH_TIMEOUT 200
 
+#define TOUCH_UP 7
+#define TOUCH_LEFT 5
+#define TOUCH_RIGHT 8
+#define TOUCH_DOWN 3
+
 #define BME_DELAY 500
 
 extern TimedTaskScheduler* timed_task_scheduler;

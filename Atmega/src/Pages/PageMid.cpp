@@ -27,13 +27,6 @@ void update() {
                   DisplayArrow::RIGHT |
                   DisplayArrow::BOTTOM |
                   DisplayArrow::TOP);
-    char testSTR[] = "Nachrichten";
-    char testSTR_2[] = "BME";
-    char testSTR_3[] = "Zeit";
-    label_arrow(DisplayArrow::TOP, testSTR);
-    label_arrow(DisplayArrow::BOTTOM, testSTR);
-    label_arrow(DisplayArrow::LEFT, testSTR_2);
-    label_arrow(DisplayArrow::RIGHT, testSTR_3);
   } while (display.nextPage());
 }
 

@@ -5,3 +5,7 @@ Temperature, Humidity and Pressure, a ``TP4056`` as charging-circuit and as Micr
 **Please note that this Project is still Work in Progress and is not nearly finished yet**
 
 This project originates from this [project](https://github.com/RatsgymnasiumPeine/2016-07-diy-smartwatch), but it's completly rewritten and on a PCB.
+
+## Language
+
+This project is written in C++, but for the learning aspect I try to keep it very close to C (excluding classes). In the future this might get fully ported to pure C.

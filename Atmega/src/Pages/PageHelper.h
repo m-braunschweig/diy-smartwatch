@@ -56,6 +56,7 @@ namespace DisplayArrow {
 
 void draw_triangle(uint8_t);
 void draw_center_str(char* , Fontsize&);
+void label_arrow(uint8_t, char*);
 
 extern DisplayPage page_mid;
 

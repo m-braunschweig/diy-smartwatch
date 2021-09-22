@@ -57,7 +57,7 @@ void draw_center_str(const char* str, const Fontsize& size) {
   display.firstPage();
   display.setFontPosCenter();
   do {
-    display.drawStr((DISPLAY_WIDTH / 2) - str_width / 2, (DISPLAY_HEIGHT / 2), str);
+    display.drawStr(DISPLAY_MID_H - str_width / 2, DISPLAY_MID_V, str);
   } while (display.nextPage());
 }
 
@@ -98,4 +98,31 @@ void draw_triangle(uint8_t directions) {
                          DISPLAY_MID_H - TRIANGLE_HEIGTH, 
                          TRIANGLE_SPACE + TRIANGLE_WIDTH);
   }
+}
+
+void label_arrow(uint8_t direction, char* str) {
+  display.setFontPosCenter();
+  display.setFont(FONT_SMALL);
+  int str_width = display.getStrWidth(str);
+  if (DisplayArrow::TOP & direction) {
+    display.drawStr(DISPLAY_MID_H - str_width / 2, 
+                    TRIANGLE_HEIGTH + 2 * TRIANGLE_SPACE,
+                    str);
+  }
+  if (DisplayArrow::BOTTOM & direction) {
+    display.drawStr(DISPLAY_MID_H - str_width / 2, 
+                    DISPLAY_HEIGHT - (TRIANGLE_HEIGTH + 2 * TRIANGLE_SPACE),
+                    str);
+  }
+  if (DisplayArrow::LEFT & direction) {
+    display.drawStr(TRIANGLE_WIDTH + 2 * TRIANGLE_SPACE + 2,
+                    DISPLAY_MID_V,
+                    str);
+  }
+  if (DisplayArrow::RIGHT & direction) {
+    display.drawStr(DISPLAY_WIDTH - (TRIANGLE_WIDTH + 2 * TRIANGLE_SPACE + 2 + str_width),
+                    DISPLAY_MID_V,
+                    str);
+  }
+
 }

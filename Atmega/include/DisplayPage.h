@@ -20,13 +20,13 @@
 #define DISPLAY_PAGE_H
 
 class DisplayPage {
-  public:
-    bool (*touch_up)();
-    bool (*touch_down)();
-    bool (*touch_left)();
-    bool (*touch_right)();
-    void (*update)();
-    unsigned long update_interval;
+ public:
+  bool (*touch_up)();
+  bool (*touch_down)();
+  bool (*touch_left)();
+  bool (*touch_right)();
+  void (*update)();
+  unsigned long update_interval;
 };
 
 #endif

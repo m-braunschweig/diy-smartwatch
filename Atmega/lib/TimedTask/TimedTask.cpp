@@ -16,8 +16,8 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include <TimedTask.h>
 #include <Arduino.h>
+#include <TimedTask.h>
 
 TimedTask::TimedTask(unsigned long delay) {
   delay_ = delay;

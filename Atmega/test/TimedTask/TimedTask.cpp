@@ -16,8 +16,8 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include <Arduino.h>
 #include <Adafruit_BusIO_Register.h>
+#include <Arduino.h>
 #include <TimedTask.h>
 #include <unity.h>
 
@@ -83,4 +83,5 @@ void setup() {
   UNITY_END();
 }
 
-void loop() {}
+void loop() {
+}

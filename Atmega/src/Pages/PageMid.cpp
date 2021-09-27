@@ -23,10 +23,8 @@ DisplayPage page_mid = DisplayPage();
 void update() {
   display.firstPage();
   do {
-    draw_triangle(DisplayArrow::LEFT |
-                  DisplayArrow::RIGHT |
-                  DisplayArrow::BOTTOM |
-                  DisplayArrow::TOP);
+    draw_triangle(DisplayArrow::LEFT | DisplayArrow::RIGHT |
+                  DisplayArrow::BOTTOM | DisplayArrow::TOP);
   } while (display.nextPage());
 }
 
@@ -34,4 +32,3 @@ void setup_page_mid() {
   page_mid.update = update;
   page_mid.update_interval = 20000;
 }
-

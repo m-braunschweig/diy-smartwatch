@@ -19,24 +19,23 @@
 #ifndef DISPLAY_MANAGER_H
 #define DISPLAY_MANAGER_H
 
-#include <DisplayPage.h>
 #include "Pages/PageHelper.h"
+#include <DisplayPage.h>
 
 class DisplayManager {
-  public:
-    void setup();
-    void touch_up();
-    void touch_down();
-    void touch_left();
-    void touch_right();
-    void changed_page();
-    void (*update)();
-    unsigned long update_interval();
+ public:
+  void setup();
+  void touch_up();
+  void touch_down();
+  void touch_left();
+  void touch_right();
+  void changed_page();
+  void (*update)();
+  unsigned long update_interval();
 
-  private:
-    DisplayPage* current_page = &page_mid;
-    DisplayPage* pages[2] = {&page_mid, nullptr};
-
+ private:
+  DisplayPage* current_page = &page_mid;
+  DisplayPage* pages[2] = {&page_mid, nullptr};
 };
 
 #endif

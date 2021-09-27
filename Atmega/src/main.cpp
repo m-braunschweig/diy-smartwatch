@@ -16,17 +16,17 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#include <SPI.h>
-#include <Wire.h>
-#include <Arduino.h>
-#include <WString.h>
-#include <Gloabls.h>
+#include "Pages/PageHelper.h"
+#include "Touch.h"
 #include <Adafruit_BusIO_Register.h>
 #include <Adafruit_I2CDevice.h>
 #include <Adafruit_Sensor.h>
+#include <Arduino.h>
 #include <DisplayManager.h>
-#include "Pages/PageHelper.h"
-#include "Touch.h"
+#include <Gloabls.h>
+#include <SPI.h>
+#include <WString.h>
+#include <Wire.h>
 
 TimedTaskScheduler* timed_task_scheduler = new TimedTaskScheduler;
 DisplayManager display_manager;

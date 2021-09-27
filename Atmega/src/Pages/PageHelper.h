@@ -19,15 +19,10 @@
 #ifndef PAGE_HELPER_H
 #define PAGE_HELPER_H
 
-#include <U8g2lib.h>
 #include <DisplayPage.h>
+#include <U8g2lib.h>
 
-enum Fontsize {
-  TINY,
-  SMALL,
-  MEDIUM,
-  LARGE
-};
+enum Fontsize { TINY, SMALL, MEDIUM, LARGE };
 
 #define FONT_TINY u8g2_font_profont11_tr
 #define FONT_SMALL u8g2_font_profont15_tr
@@ -55,7 +50,7 @@ namespace DisplayArrow {
 }
 
 void draw_triangle(uint8_t);
-void draw_center_str(char* , Fontsize&);
+void draw_center_str(char*, Fontsize&);
 void label_arrow(uint8_t, char*);
 
 extern DisplayPage page_mid;

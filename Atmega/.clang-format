@@ -1,0 +1,16 @@
+﻿---
+BasedOnStyle: LLVM
+AccessModifierOffset: '-1'
+AllowAllParametersOfDeclarationOnNextLine: 'false'
+AllowShortCaseLabelsOnASingleLine: 'false'
+AllowShortFunctionsOnASingleLine: InlineOnly
+CompactNamespaces: 'false'
+FixNamespaceComments: 'false'
+IndentCaseLabels: 'true'
+IndentWidth: '2'
+IndentWrappedFunctionNames: 'true'
+Language: Cpp
+NamespaceIndentation: All
+PointerAlignment: Left
+
+...

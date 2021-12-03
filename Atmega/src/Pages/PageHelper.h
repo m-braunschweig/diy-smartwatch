@@ -53,12 +53,15 @@ void draw_triangle(uint8_t);
 void draw_center_str(char*, Fontsize&);
 void label_arrow(uint8_t, char*);
 
-extern DisplayPage page_mid;
+extern DisplayPage* page_mid;
+extern DisplayPage* page_time;
 
 void setup_page_mid();
+void setup_page_time();
 
 inline void setup_pages() {
   setup_page_mid();
+  setup_page_time();
 }
 
 #endif

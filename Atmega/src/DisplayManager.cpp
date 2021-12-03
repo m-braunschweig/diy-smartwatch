@@ -17,14 +17,18 @@
  */
 
 #include <DisplayManager.h>
+#include <TimedTask.h>
+
+DisplayPage* DisplayManager::current_page = nullptr;
 
 void DisplayManager::setup() {
   display.begin();
-  update = current_page->update;
+  current_page = page_mid;
 }
 
 void DisplayManager::touch_up() {
-  current_page->touch_up();
+  if (current_page->touch_up())
+    change_page(current_page->page_up);
 }
 
 void DisplayManager::touch_left() {
@@ -39,8 +43,14 @@ void DisplayManager::touch_down() {
   current_page->touch_down();
 }
 
-void DisplayManager::changed_page() {
-  update = current_page->update;
+void DisplayManager::update() {
+  current_page->update();
+}
+
+void DisplayManager::change_page(DisplayPage* new_page) {
+  current_page = new_page;
+  new_page->update();
+  timed_task_scheduler->refresh_delay_times();
 }
 
 unsigned long DisplayManager::update_interval() {

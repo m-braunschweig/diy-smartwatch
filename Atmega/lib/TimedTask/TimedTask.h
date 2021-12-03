@@ -35,10 +35,13 @@
 class TimedTask {
  public:
   TimedTask(unsigned long);
+  TimedTask(unsigned long (*)());
   void (*task)();
   void update_next_run();
+  void refresh_delay_time();
   bool check_run();
   TimedTask* next = nullptr;
+  unsigned long (*delay_ptr_)() = nullptr;
 
  private:
   unsigned long delay_;
@@ -47,11 +50,14 @@ class TimedTask {
 
 class TimedTaskScheduler {
  public:
-  void add_task(TimedTask*);
-  void update();
+  static void add_task(TimedTask*);
+  static void update();
+  static void refresh_delay_times();
 
  private:
-  TimedTask* first_ = nullptr;
+  static TimedTask* first_;
 };
+
+static TimedTaskScheduler* timed_task_scheduler = new TimedTaskScheduler;
 
 #endif

@@ -17,18 +17,66 @@
  */
 
 #include "PageHelper.h"
+#include <DisplayManager.h>
 
-DisplayPage page_mid = DisplayPage();
+DisplayPage* page_mid = new DisplayPage();
+int page_mid_index = 0;
+DisplayPage* page_order[] = {page_time, nullptr};
+const char* page_names[] = {"Zeit"};
 
-void update() {
+void page_mid_update() {
   display.firstPage();
   do {
-    draw_triangle(DisplayArrow::LEFT | DisplayArrow::RIGHT |
-                  DisplayArrow::BOTTOM | DisplayArrow::TOP);
+    draw_triangle(DisplayArrow::LEFT | DisplayArrow::RIGHT | DisplayArrow::TOP);
+    label_arrow(DisplayArrow::TOP, (char*)page_names[page_mid_index]);
   } while (display.nextPage());
 }
 
+bool page_mid_touch_up() {
+  return true;
+}
+
+bool page_mid_touch_false() {
+  return false;
+}
+
+void page_mid_scroll(bool right) {
+  // Handle horizontal "scrolling" (Warning: This could be buggy!)
+  if (right)
+    ++page_mid_index;
+  else
+    --page_mid_index;
+  if (page_mid_index < 0) {
+    page_mid_index = 0;
+    while (page_order[page_mid_index] != nullptr) {
+      ++page_mid_index;
+    }
+    --page_mid_index;
+  } else if (page_order[page_mid_index] == nullptr) {
+    page_mid_index = 0;
+  }
+  page_mid->page_up = page_order[page_mid_index];
+  page_mid_update();
+}
+
+bool page_mid_touch_right() {
+  page_mid_scroll(true);
+  Serial.println("RIGHT");
+  return false;
+}
+
+bool page_mid_touch_left() {
+  page_mid_scroll(false);
+  Serial.println("LEFT");
+  return false;
+}
+
 void setup_page_mid() {
-  page_mid.update = update;
-  page_mid.update_interval = 20000;
+  page_mid->update = page_mid_update;
+  page_mid->update_interval = 20000;
+  page_mid->page_up = page_time;
+  page_mid->touch_down = page_mid_touch_false;
+  page_mid->touch_up = page_mid_touch_up;
+  page_mid->touch_left = page_mid_touch_left;
+  page_mid->touch_right = page_mid_touch_right;
 }

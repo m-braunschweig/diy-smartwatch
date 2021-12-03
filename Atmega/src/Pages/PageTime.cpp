@@ -1,3 +1,4 @@
+
 /*
  *  diy-smartwatch - a diy smartwatch
  *  Copyright (C) 2021  Mika Braunschweig
@@ -16,23 +17,34 @@
  *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-#ifndef DISPLAY_PAGE_H
-#define DISPLAY_PAGE_H
+#include "PageHelper.h"
 
-/*
- * The methods touch_* return a boolean, whether current_page should be updated
- * to the correspondig page. True means it should be overriden
- */
+DisplayPage* page_time = new DisplayPage();
 
-class DisplayPage {
- public:
-  bool (*touch_up)();
-  bool (*touch_down)();
-  bool (*touch_left)();
-  bool (*touch_right)();
-  DisplayPage* page_up;
-  void (*update)();
-  unsigned long update_interval;
-};
+bool showing_time = true;
 
-#endif
+void page_time_update() {
+  display.firstPage();
+  do {
+    draw_triangle(DisplayArrow::LEFT | DisplayArrow::RIGHT | DisplayArrow::TOP);
+    label_arrow(DisplayArrow::TOP, (char*)"Zurück");
+  } while (display.nextPage());
+}
+
+bool page_time_touch_false() {
+  return false;
+}
+
+bool page_time_touch_up() {
+  return true;
+}
+
+void setup_page_time() {
+  page_time->update = page_time_update;
+  page_time->update_interval = 5000;
+  page_time->page_up = page_mid;
+  page_time->touch_down = page_time_touch_false;
+  page_time->touch_up = page_time_touch_up;
+  page_time->touch_left = page_time_touch_false;
+  page_time->touch_right = page_time_touch_false;
+}

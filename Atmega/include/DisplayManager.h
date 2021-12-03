@@ -24,18 +24,18 @@
 
 class DisplayManager {
  public:
-  void setup();
-  void touch_up();
-  void touch_down();
-  void touch_left();
-  void touch_right();
-  void changed_page();
-  void (*update)();
-  unsigned long update_interval();
+  static void setup();
+  static void touch_up();
+  static void touch_down();
+  static void touch_left();
+  static void touch_right();
+  static unsigned long update_interval();
+  static void update();
+  static DisplayPage* get_current_page();
 
  private:
-  DisplayPage* current_page = &page_mid;
-  DisplayPage* pages[2] = {&page_mid, nullptr};
+  static DisplayPage* current_page;
+  static void change_page(DisplayPage*);
 };
 
 #endif

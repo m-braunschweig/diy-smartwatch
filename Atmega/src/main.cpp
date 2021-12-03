@@ -28,7 +28,6 @@
 #include <WString.h>
 #include <Wire.h>
 
-TimedTaskScheduler* timed_task_scheduler = new TimedTaskScheduler;
 DisplayManager display_manager;
 void setup_tasks();
 
@@ -44,9 +43,13 @@ void loop() {
   delay(TASK_DELAY);
 }
 
+void display_manager_update() {
+  display_manager.update();
+}
+
 void setup_tasks() {
-  TimedTask* display_task = new TimedTask(display_manager.update_interval());
-  display_task->task = display_manager.update;
+  TimedTask* display_task = new TimedTask(&display_manager.update_interval);
+  display_task->task = &display_manager_update;
   timed_task_scheduler->add_task(display_task);
   TimedTask* touch_task = new TimedTask(TOUCH_DELAY);
   touch_task->task = &update_touch;

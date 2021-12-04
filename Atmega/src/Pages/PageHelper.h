@@ -25,7 +25,7 @@
 enum Fontsize { TINY, SMALL, MEDIUM, LARGE };
 
 #define FONT_TINY u8g2_font_profont11_tr
-#define FONT_SMALL u8g2_font_profont15_tr
+#define FONT_SMALL u8g2_font_profont15_tf
 #define FONT_MEDIUM u8g2_font_profont17_tf
 #define FONT_LARGE u8g2_font_profont22_tr
 #define FONT_MESSAGE FONT_TINY
@@ -51,17 +51,22 @@ namespace DisplayArrow {
 
 void draw_triangle(uint8_t);
 void draw_center_str(char*, Fontsize&);
+void draw_center_str_no_loop(const char*);
+void draw_center_str_prep(Fontsize);
 void label_arrow(uint8_t, char*);
 
 extern DisplayPage* page_mid;
 extern DisplayPage* page_time;
+extern DisplayPage* page_bme;
 
 void setup_page_mid();
 void setup_page_time();
+void setup_page_bme();
 
 inline void setup_pages() {
   setup_page_mid();
   setup_page_time();
+  setup_page_bme();
 }
 
 #endif

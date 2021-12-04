@@ -20,9 +20,12 @@
 #include <DisplayManager.h>
 
 DisplayPage* page_mid = new DisplayPage();
+DisplayPage* page_bme = new DisplayPage();
+DisplayPage* page_time = new DisplayPage();
+
 int page_mid_index = 0;
-DisplayPage* page_order[] = {page_time, nullptr};
-const char* page_names[] = {"Zeit"};
+DisplayPage* page_order[] = {page_time, page_bme, nullptr};
+const char* page_names[] = {"Zeit", "BME"};
 
 void page_mid_update() {
   display.firstPage();
@@ -41,7 +44,6 @@ bool page_mid_touch_false() {
 }
 
 void page_mid_scroll(bool right) {
-  // Handle horizontal "scrolling" (Warning: This could be buggy!)
   if (right)
     ++page_mid_index;
   else
@@ -61,13 +63,11 @@ void page_mid_scroll(bool right) {
 
 bool page_mid_touch_right() {
   page_mid_scroll(true);
-  Serial.println("RIGHT");
   return false;
 }
 
 bool page_mid_touch_left() {
   page_mid_scroll(false);
-  Serial.println("LEFT");
   return false;
 }
 

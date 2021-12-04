@@ -18,11 +18,15 @@
  */
 
 #include "PageHelper.h"
+#include <Adafruit_BME280.h>
 
-bool showing_time = true;
+Adafruit_BME280 bme;
+#define NUM_PAGES = 3
+int page = 0;
 
-void page_time_update() {
+void page_bme_update() {
   display.firstPage();
+  draw_center_str_prep(MEDIUM);
   do {
     draw_triangle(DisplayArrow::LEFT | DisplayArrow::RIGHT | DisplayArrow::TOP);
     label_arrow(DisplayArrow::TOP, (char*)"Zur\xfc"
@@ -30,20 +34,23 @@ void page_time_update() {
   } while (display.nextPage());
 }
 
-bool page_time_touch_false() {
+bool page_bme_touch_false() {
   return false;
 }
 
-bool page_time_touch_up() {
+bool page_bme_touch_up() {
   return true;
 }
 
-void setup_page_time() {
-  page_time->update = page_time_update;
-  page_time->update_interval = 5000;
-  page_time->page_up = page_mid;
-  page_time->touch_down = page_time_touch_false;
-  page_time->touch_up = page_time_touch_up;
-  page_time->touch_left = page_time_touch_false;
-  page_time->touch_right = page_time_touch_false;
+void setup_page_bme() {
+  bme.begin();
+  bme.setSampling(bme.MODE_FORCED, bme.SAMPLING_X16, bme.SAMPLING_X16,
+                  bme.SAMPLING_X16, bme.FILTER_OFF, bme.STANDBY_MS_1000);
+  page_bme->update = page_bme_update;
+  page_bme->update_interval = 5000;
+  page_bme->page_up = page_mid;
+  page_bme->touch_down = page_bme_touch_false;
+  page_bme->touch_up = page_bme_touch_up;
+  page_bme->touch_left = page_bme_touch_false;
+  page_bme->touch_right = page_bme_touch_false;
 }

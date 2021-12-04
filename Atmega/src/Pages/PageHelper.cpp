@@ -63,6 +63,40 @@ void draw_center_str(const char* str, const Fontsize& size) {
 }
 
 /*
+ * Prepares draw_center_str_no_loop
+ */
+void draw_center_str_prep(const Fontsize size) {
+  const uint8_t* font;
+  switch (size) {
+    case TINY:
+      font = FONT_TINY;
+      break;
+    case SMALL:
+      font = FONT_SMALL;
+      break;
+    case MEDIUM:
+      font = FONT_MEDIUM;
+      break;
+    case LARGE:
+      font = FONT_LARGE;
+      break;
+    default:
+      font = FONT_TINY;
+      break;
+  }
+  display.setFont(font);
+  display.setFontPosCenter();
+}
+/*
+ * Draw a c-string in the center of the screen.
+ * It has no internal u8g2 loop.
+ */
+void draw_center_str_no_loop(const char* str) {
+  int str_width = display.getStrWidth(str);
+  display.drawStr(DISPLAY_MID_H - str_width / 2, DISPLAY_MID_V, str);
+}
+
+/*
  * Show triangles by using bitmasks (DisplayArrow::*).
  * This requires an external u8g2 loop!
  */

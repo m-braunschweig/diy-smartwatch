@@ -33,7 +33,10 @@
 #define TOUCH_RIGHT 8
 #define TOUCH_DOWN 3
 
-#define BME_DELAY 500
+#define BME_DELAY 5000
+// The idea is: f(x) = m*x + b, where x is the measurement of the BME
+#define BME_TEMPERATURE_OFFSET_M 1.0
+#define BME_TEMPERATURE_OFFSET_B 0.0
 
 extern TimedTaskScheduler* timed_task_scheduler;
 

@@ -1,4 +1,3 @@
-
 /*
  *  diy-smartwatch - a diy smartwatch
  *  Copyright (C) 2021  Mika Braunschweig
@@ -19,10 +18,14 @@
 
 #include "PageHelper.h"
 #include <Adafruit_BME280.h>
+#include <Gloabls.h>
+#include <WString.h>
 
 Adafruit_BME280 bme;
-#define NUM_PAGES = 3
 int page = 0;
+#define PAGE_BME_NUM_PAGES 3
+
+// Note: BME inaccuracys can be solved with the according values in Globals.h
 
 void page_bme_update() {
   display.firstPage();
@@ -31,6 +34,26 @@ void page_bme_update() {
     draw_triangle(DisplayArrow::LEFT | DisplayArrow::RIGHT | DisplayArrow::TOP);
     label_arrow(DisplayArrow::TOP, (char*)"Zur\xfc"
                                           "ck");
+    bme.takeForcedMeasurement();
+    String s;
+    switch (page) {
+      case 0:
+        s = String(bme.readTemperature() * BME_TEMPERATURE_OFFSET_M -
+                   BME_TEMPERATURE_OFFSET_B) +
+            "\xb0"
+            "C";
+        break;
+      case 1:
+        s = String(bme.readHumidity()) + "%";
+        break;
+      case 2:
+        s = String(bme.readPressure() / 100.0) + "hPa";
+        break;
+      default:
+        draw_center_str_no_loop("Fehler!");
+        break;
+    }
+    draw_center_str_no_loop(s.c_str());
   } while (display.nextPage());
 }
 
@@ -42,6 +65,22 @@ bool page_bme_touch_up() {
   return true;
 }
 
+bool page_bme_touch_left() {
+  --page;
+  if (page < 0)
+    page = PAGE_BME_NUM_PAGES - 1;
+  page_bme_update();
+  return false;
+}
+
+bool page_bme_touch_right() {
+  ++page;
+  if (page >= PAGE_BME_NUM_PAGES)
+    page = 0;
+  page_bme_update();
+  return false;
+}
+
 void setup_page_bme() {
   bme.begin();
   bme.setSampling(bme.MODE_FORCED, bme.SAMPLING_X16, bme.SAMPLING_X16,
@@ -51,6 +90,6 @@ void setup_page_bme() {
   page_bme->page_up = page_mid;
   page_bme->touch_down = page_bme_touch_false;
   page_bme->touch_up = page_bme_touch_up;
-  page_bme->touch_left = page_bme_touch_false;
-  page_bme->touch_right = page_bme_touch_false;
+  page_bme->touch_left = page_bme_touch_left;
+  page_bme->touch_right = page_bme_touch_right;
 }

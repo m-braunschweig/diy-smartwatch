@@ -1,7 +1,7 @@
 #include "Touch.h"
 #include <Adafruit_MPR121.h>
 #include <DisplayManager.h>
-#include <Gloabls.h>
+#include <Globals.h>
 
 Adafruit_MPR121 mpr = Adafruit_MPR121();
 

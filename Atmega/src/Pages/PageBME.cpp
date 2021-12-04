@@ -18,7 +18,7 @@
 
 #include "PageHelper.h"
 #include <Adafruit_BME280.h>
-#include <Gloabls.h>
+#include <Globals.h>
 #include <WString.h>
 
 Adafruit_BME280 bme;
@@ -31,9 +31,6 @@ void page_bme_update() {
   display.firstPage();
   draw_center_str_prep(MEDIUM);
   do {
-    draw_triangle(DisplayArrow::LEFT | DisplayArrow::RIGHT | DisplayArrow::TOP);
-    label_arrow(DisplayArrow::TOP, (char*)"Zur\xfc"
-                                          "ck");
     bme.takeForcedMeasurement();
     String s;
     switch (page) {
@@ -54,6 +51,9 @@ void page_bme_update() {
         break;
     }
     draw_center_str_no_loop(s.c_str());
+    draw_triangle(DisplayArrow::LEFT | DisplayArrow::RIGHT | DisplayArrow::TOP);
+    label_arrow(DisplayArrow::TOP, (char*)"Zur\xfc"
+                                          "ck");
   } while (display.nextPage());
 }
 

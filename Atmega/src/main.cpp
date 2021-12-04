@@ -23,7 +23,7 @@
 #include <Adafruit_Sensor.h>
 #include <Arduino.h>
 #include <DisplayManager.h>
-#include <Gloabls.h>
+#include <Globals.h>
 #include <SPI.h>
 #include <WString.h>
 #include <Wire.h>

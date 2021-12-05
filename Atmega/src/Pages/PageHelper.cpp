@@ -33,6 +33,11 @@ namespace DisplayArrow {
  * It has an internal u8g2 loop.
  */
 void draw_center_str(const char* str, const Fontsize& size) {
+  draw_center_str(str, size, 0);
+}
+
+void draw_center_str(const char* str, const Fontsize& size,
+                     const int& offset_y) {
   const uint8_t* font;
   switch (size) {
     case TINY:
@@ -58,7 +63,8 @@ void draw_center_str(const char* str, const Fontsize& size) {
   display.firstPage();
   display.setFontPosCenter();
   do {
-    display.drawStr(DISPLAY_MID_H - str_width / 2, DISPLAY_MID_V, str);
+    display.drawStr(DISPLAY_MID_H - str_width / 2, DISPLAY_MID_V + offset_y,
+                    str);
   } while (display.nextPage());
 }
 
@@ -92,8 +98,12 @@ void draw_center_str_prep(const Fontsize size) {
  * It has no internal u8g2 loop.
  */
 void draw_center_str_no_loop(const char* str) {
+  draw_center_str_no_loop(str, 0);
+}
+
+void draw_center_str_no_loop(const char* str, const int& offset_y) {
   int str_width = display.getStrWidth(str);
-  display.drawStr(DISPLAY_MID_H - str_width / 2, DISPLAY_MID_V, str);
+  display.drawStr(DISPLAY_MID_H - str_width / 2, DISPLAY_MID_V + offset_y, str);
 }
 
 /*

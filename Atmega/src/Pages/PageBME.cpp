@@ -50,7 +50,7 @@ void page_bme_update() {
         draw_center_str_no_loop("Fehler!");
         break;
     }
-    draw_center_str_no_loop(s.c_str());
+    draw_center_str_no_loop(s.c_str(), -2);
     draw_triangle(DisplayArrow::LEFT | DisplayArrow::RIGHT |
                   DisplayArrow::BOTTOM);
   } while (display.nextPage());

@@ -50,8 +50,10 @@ namespace DisplayArrow {
 }
 
 void draw_triangle(uint8_t);
-void draw_center_str(char*, Fontsize&);
+void draw_center_str(const char*, const Fontsize&);
+void draw_center_str(const char*, const Fontsize&, const int&);
 void draw_center_str_no_loop(const char*);
+void draw_center_str_no_loop(const char*, const int&);
 void draw_center_str_prep(Fontsize);
 void label_arrow(uint8_t, char*);
 

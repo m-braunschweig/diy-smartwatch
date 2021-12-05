@@ -28,7 +28,7 @@ void DisplayManager::setup() {
 
 void DisplayManager::touch_up() {
   if (current_page->touch_up())
-    change_page(current_page->page_up);
+    change_page(current_page->page_above);
 }
 
 void DisplayManager::touch_left() {
@@ -40,7 +40,8 @@ void DisplayManager::touch_right() {
 }
 
 void DisplayManager::touch_down() {
-  current_page->touch_down();
+  if (current_page->touch_down())
+    change_page(current_page->page_above);
 }
 
 void DisplayManager::update() {

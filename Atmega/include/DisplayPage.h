@@ -30,7 +30,7 @@ class DisplayPage {
   bool (*touch_down)();
   bool (*touch_left)();
   bool (*touch_right)();
-  DisplayPage* page_up;
+  DisplayPage* page_above;
   void (*update)();
   unsigned long update_interval;
 };

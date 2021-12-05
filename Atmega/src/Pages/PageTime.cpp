@@ -41,7 +41,7 @@ bool page_time_touch_up() {
 void setup_page_time() {
   page_time->update = page_time_update;
   page_time->update_interval = 5000;
-  page_time->page_up = page_mid;
+  page_time->page_above = page_mid;
   page_time->touch_down = page_time_touch_false;
   page_time->touch_up = page_time_touch_up;
   page_time->touch_left = page_time_touch_false;

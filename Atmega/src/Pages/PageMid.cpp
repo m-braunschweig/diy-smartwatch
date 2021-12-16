@@ -31,7 +31,8 @@ void page_mid_update() {
   display.firstPage();
   do {
     draw_triangle(DisplayArrow::LEFT | DisplayArrow::RIGHT | DisplayArrow::TOP);
-    label_arrow(DisplayArrow::TOP, (char*)page_names[page_mid_index]);
+    draw_center_str_prep(Fontsize::HUGE);
+    draw_center_str_no_loop((char*)page_names[page_mid_index], 2);
   } while (display.nextPage());
 }
 

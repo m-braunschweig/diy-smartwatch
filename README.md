@@ -7,5 +7,10 @@ Temperature, Humidity and Pressure, a ``TP4056`` as charging-circuit and as Micr
 This project originates from this [project](https://github.com/RatsgymnasiumPeine/2016-07-diy-smartwatch), but it's completly rewritten and on a PCB.
 
 ## Language
-
 This project is written in C++, but for the learning aspect I try to keep it very close to C (excluding classes). In the future this might get fully ported to pure C.
+
+## Debugging
+You can debug this using gdb with simavr. An example ``.gdbinit`` is given. You then have to run ``pio run -e Debug && simavr -m atmega1284 -f 8000000 .pio/build/Debug/firmware.elf -g & avr-gdb`` (on
+Linux Systems).
+
+You might have to add the ``Atmega`` directory to your gdb's safe-path to run the gdbinit (or you run the commands of the file manually).

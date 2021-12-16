@@ -27,7 +27,8 @@
 class DisplayPage {
  public:
   bool (*touch_up)();
-  bool (*touch_down)();
+  bool (*touch_down_left)();
+  bool (*touch_down_right)();
   bool (*touch_left)();
   bool (*touch_right)();
   DisplayPage* page_above;

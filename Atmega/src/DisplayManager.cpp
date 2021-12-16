@@ -39,8 +39,13 @@ void DisplayManager::touch_right() {
   current_page->touch_right();
 }
 
-void DisplayManager::touch_down() {
-  if (current_page->touch_down())
+void DisplayManager::touch_down_left() {
+  if (current_page->touch_down_left())
+    change_page(current_page->page_above);
+}
+
+void DisplayManager::touch_down_right() {
+  if (current_page->touch_down_right())
     change_page(current_page->page_above);
 }
 

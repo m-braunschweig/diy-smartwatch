@@ -26,7 +26,8 @@ class DisplayManager {
  public:
   static void setup();
   static void touch_up();
-  static void touch_down();
+  static void touch_down_left();
+  static void touch_down_right();
   static void touch_left();
   static void touch_right();
   static unsigned long update_interval();

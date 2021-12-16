@@ -31,7 +31,8 @@
 #define TOUCH_UP 7
 #define TOUCH_LEFT 5
 #define TOUCH_RIGHT 8
-#define TOUCH_DOWN 3
+#define TOUCH_DOWN_LEFT 3
+#define TOUCH_DOWN_RIGHT 2
 
 #define BME_DELAY 5000
 // The idea is: f(x) = m*x + b, where x is the measurement of the BME

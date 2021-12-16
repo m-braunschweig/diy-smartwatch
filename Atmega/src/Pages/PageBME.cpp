@@ -87,7 +87,8 @@ void setup_page_bme() {
   page_bme->update = page_bme_update;
   page_bme->update_interval = 5000;
   page_bme->page_above = page_mid;
-  page_bme->touch_down = page_bme_touch_down;
+  page_bme->touch_down_left = page_bme_touch_down;
+  page_bme->touch_down_right = page_bme_touch_down;
   page_bme->touch_up = page_bme_touch_false;
   page_bme->touch_left = page_bme_touch_left;
   page_bme->touch_right = page_bme_touch_right;

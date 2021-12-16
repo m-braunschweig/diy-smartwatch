@@ -75,7 +75,8 @@ void setup_page_mid() {
   page_mid->update = page_mid_update;
   page_mid->update_interval = 20000;
   page_mid->page_above = page_time;
-  page_mid->touch_down = page_mid_touch_false;
+  page_mid->touch_down_left = page_mid_touch_false;
+  page_mid->touch_down_right = page_mid_touch_false;
   page_mid->touch_up = page_mid_touch_up;
   page_mid->touch_left = page_mid_touch_left;
   page_mid->touch_right = page_mid_touch_right;

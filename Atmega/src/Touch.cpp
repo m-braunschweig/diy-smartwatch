@@ -28,8 +28,10 @@ void update_touch() {
     display_manager_->touch_left();
   } else if (cur & _BV(TOUCH_RIGHT)) {
     display_manager_->touch_right();
-  } else if (cur & _BV(TOUCH_DOWN)) {
-    display_manager_->touch_down();
+  } else if (cur & _BV(TOUCH_DOWN_LEFT)) {
+    display_manager_->touch_down_left();
+  } else if (cur & _BV(TOUCH_DOWN_RIGHT)) {
+    display_manager_->touch_down_right();
   }
   if (cur) {
     timeout = millis() + TOUCH_TIMEOUT;

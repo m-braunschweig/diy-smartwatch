@@ -86,6 +86,9 @@ void draw_center_str_prep(const Fontsize size) {
     case LARGE:
       font = FONT_LARGE;
       break;
+    case HUGE:
+      font = FONT_HUGE;
+      break;
     default:
       font = FONT_TINY;
       break;

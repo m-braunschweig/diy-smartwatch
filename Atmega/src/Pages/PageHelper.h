@@ -22,12 +22,13 @@
 #include <DisplayPage.h>
 #include <U8g2lib.h>
 
-enum Fontsize { TINY, SMALL, MEDIUM, LARGE };
+enum Fontsize { TINY, SMALL, MEDIUM, LARGE, HUGE };
 
 #define FONT_TINY u8g2_font_profont11_tr
 #define FONT_SMALL u8g2_font_profont15_tf
 #define FONT_MEDIUM u8g2_font_profont17_tf
 #define FONT_LARGE u8g2_font_profont22_tr
+#define FONT_HUGE u8g2_font_profont29_tr
 #define FONT_MESSAGE FONT_TINY
 
 #define DISPLAY_WIDTH 128

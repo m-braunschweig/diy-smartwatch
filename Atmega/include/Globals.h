@@ -24,6 +24,10 @@
 
 #define TASK_DELAY 10
 
+#define BT_RX 6
+#define BT_TX 5
+#define BT_KEY_PIN 7
+
 #define MPR_ADDRESS 0x5A
 #define TOUCH_DELAY 50
 #define TOUCH_TIMEOUT 200

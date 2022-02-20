@@ -14,3 +14,12 @@ You can debug this using gdb with simavr. An example ``.gdbinit`` is given. You 
 Linux Systems).
 
 You might have to add the ``Atmega`` directory to your gdb's safe-path to run the gdbinit (or you run the commands of the file manually).
+
+## Android-Development
+As I don't know a lot about Android/Bluetooth I am going to implement it following this order:
+- [x] Get a basic app (and a small PlatformIO Firmware exposing the Serial connection)
+- [ ] Add "pairing" → saving the device in the app
+- [ ] Send some data via a buttonpress
+- [ ] Develop small expandable protocol (starting by sending the time; later notifications might get added)
+- [ ] Add checks for failed communication
+- [ ] Run the data transmission periodically in background

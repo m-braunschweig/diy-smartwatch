@@ -2,23 +2,20 @@
 #include <Adafruit_I2CDevice.h>
 #include <Adafruit_Sensor.h>
 #include <Arduino.h>
+#include <Bluetooth.h>
 #include <Globals.h>
 #include <SoftwareSerial.h>
 
-SoftwareSerial bluetooth_serial(BT_RX, BT_TX);
-
 void setup() {
-  pinMode(BT_KEY_PIN, OUTPUT);
-  digitalWrite(BT_KEY_PIN, HIGH);
+  setup_bluetooth(BT_KEY_PIN, BT_RX, BT_TX, BLUETOOTH_NAME, BLUETOOTH_PIN);
   Serial.begin(9600);
-  bluetooth_serial.begin(9600);
   Serial.println("Ready");
 }
 
 void loop() {
-  while (bluetooth_serial.available() > 0)
-    Serial.write(bluetooth_serial.read());
+  while (bluetooth_serial->available() > 0)
+    Serial.write(bluetooth_serial->read());
   while (Serial.available() > 0) {
-    bluetooth_serial.write(Serial.read());
+    bluetooth_serial->write(Serial.read());
   }
 }

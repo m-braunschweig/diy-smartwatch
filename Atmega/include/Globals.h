@@ -43,6 +43,9 @@
 #define BME_TEMPERATURE_OFFSET_M 1.0
 #define BME_TEMPERATURE_OFFSET_B 0.0
 
+#define BLUETOOTH_NAME "DIY_SW"
+#define BLUETOOTH_PIN "123400"
+
 extern TimedTaskScheduler* timed_task_scheduler;
 
 #endif
